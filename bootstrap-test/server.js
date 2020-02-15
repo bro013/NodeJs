@@ -13,18 +13,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
 app.get('/', function (req, res) {
-    let url = 'https://www.yr.no/sted/Norge/Rogaland/Time/Bryne/varsel.xml';
-    request(url, function(err, response, body){
-        if(err){
-            console.log('Error!');
-        }
-        else{
-            let weather = xml2js.parseString(body);
-            let weatherJson = JSON.stringify(weather);
-            console.log(weatherJson);
-        }
-    });
     res.render('index');
+});
+
+app.get('/about', function(req,res){
+    res.render('about');
 });
 
 app.listen(3000, function () {
